@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* Texto sobre la imagen */}
       <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="absolute inset-0 flex items-center justify-center text-white md:text-4xl text-2xl font-bold md:ml-0 text-center">
-        ¡Bienvenido a nuestro taller Garcia Hnos!
+        ¡Bienvenido a nuestro taller García Hnos!
       </motion.div>
 
       {/* SVG */}

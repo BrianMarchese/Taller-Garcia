@@ -7,7 +7,6 @@ import { useState } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
 
 export const NavBar = () => {
-    const pathName = usePathname();
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -21,7 +20,7 @@ export const NavBar = () => {
             <ul className="hidden md:flex">
                 <li >
                     <Link href="/">
-                        <span className="antialiased font-bold text-xl">Taller Garcia Hnos</span>
+                        <span className="antialiased font-bold text-xl">Taller García Hnos</span>
                     </Link>
                 </li>
             </ul>
@@ -43,7 +42,7 @@ export const NavBar = () => {
             </div>
 
             {/* Menú hamburguesa para móviles */}
-            <span className="md:hidden antialiased font-bold text-xl flex items-center justify-center">Taller Garcia Hnos</span>
+            <span className="md:hidden antialiased font-bold text-xl flex items-center justify-center">Taller García Hnos</span>
             <div className="md:hidden text-white py-5">
                 <button onClick={toggleMenu} className="flex items-center justify-center">
                     {isOpen ?  "" : <FiMenu className="w-6 h-6" />}
