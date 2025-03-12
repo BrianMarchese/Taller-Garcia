@@ -2,10 +2,12 @@
 
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
 
 export const NavBar = () => {
+    const pathName = usePathname();
 
     const [isOpen, setIsOpen] = useState(false)
 

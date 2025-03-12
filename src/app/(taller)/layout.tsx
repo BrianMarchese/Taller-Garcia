@@ -1,4 +1,5 @@
-import { Footer, NavBar } from "@/components";
+import { FloatButtonWhatsapp, Footer, NavBar } from "@/components";
+
 
 export default function TallerLayout({ children }: {
     children: React.ReactNode;
@@ -10,6 +11,7 @@ export default function TallerLayout({ children }: {
            { children }
            <Footer />
          </div>
+         <FloatButtonWhatsapp />
        </main>
      );
    }

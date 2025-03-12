@@ -1,8 +1,11 @@
+"use client"
+
 import { Carrusel } from "@/components";
 import Image from "next/image";
 import { BsTelephone } from "react-icons/bs";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { TfiMapAlt } from "react-icons/tfi";
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -25,9 +28,9 @@ export default function Home() {
       </div>
 
       {/* Texto sobre la imagen */}
-      <div className="absolute inset-0 flex items-center justify-center text-white md:text-4xl text-2xl font-bold md:ml-0 text-center">
+      <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="absolute inset-0 flex items-center justify-center text-white md:text-4xl text-2xl font-bold md:ml-0 text-center">
         ¡Bienvenido a nuestro taller Garcia Hnos!
-      </div>
+      </motion.div>
 
       {/* SVG */}
 
@@ -35,7 +38,7 @@ export default function Home() {
         <h2 className="md:text-4xl text-2xl text-center ">Nos especializamos en mecánica general</h2>
       </div>
       
-      <div className="p-8 flex justify-center items-center">
+      <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }}  className="p-8 flex justify-center items-center">
       {/* Card con imagen a la derecha y texto a la izquierda */}
         <div className="w-full max-w-6xl flex flex-col md:flex-row md:grid md:grid-cols-2 gap-8 mb-1 border border-white rounded-lg p-6">
           {/* Sección de texto (a la izquierda) */}
@@ -51,9 +54,9 @@ export default function Home() {
             <Image src="/profesionales.jpeg" alt="image11"className="object-cover rounded-lg sm:ml-10 lg:ml-36"  width={1100} height={100}  style={{width: '400px',height: '250px'}} />
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="p-8 flex justify-center items-center">
+      <motion.div initial={{ opacity: 0, x: 300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="p-8 flex justify-center items-center">
         {/* Primer contenedor */}
         <div className="w-full max-w-6xl flex flex-col-reverse md:flex-row md:grid md:grid-cols-2 mb-1 border border-white rounded-lg p-6">
           {/* Sección de imagen (aparece abajo en móviles) */}
@@ -69,7 +72,7 @@ export default function Home() {
             <p className="text-white text-lg font-normal">Visítenos ahora mismo, en nuestro taller mecánico tenemos un gran personal encargado de dar la mejor atención a los clientes en la provincia de Santa Fe.</p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* CARRUSEL */}
       <Carrusel />
