@@ -78,7 +78,7 @@ export default function Home() {
       <Carrusel />
 
       <div className="text-center py-16 px-5 font-bold bg-gray-600 text-white" id="contacto">
-        <h2 className="md:text-4xl text-2xl text-center ">Donde nos encontras</h2>
+        <h2 className="md:text-4xl text-2xl text-center ">DONDE NOS ENCONTRAS</h2>
         <div className="grid md:grid-cols-3 grid-cols-1 md:mt-20 mt-10 gap-7 md:gap-0">
           <div className="flex flex-col items-center justify-center">
             <TfiMapAlt className="mb-3" size={30}/>
