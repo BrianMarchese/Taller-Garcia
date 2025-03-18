@@ -1,5 +1,6 @@
 "use client"
 
+import { User } from "@/interfaces/user"
 import { auth, db, googleProvider } from "@/lib/firebaseConfig"
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { doc, getDoc, setDoc } from "firebase/firestore"
@@ -22,10 +23,13 @@ const RegisterForm = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
 
-            await setDoc(doc(db, "users", user.uid), {
-                email: user.email,
+            const userData: User = {
+                uid: user.uid,
+                email: user.email ?? "",
                 isAdmin: false
-            })
+            }
+
+            await setDoc(doc(db, "users", user.uid), userData)
 
             router.push("/")
         } catch (error: any) {
