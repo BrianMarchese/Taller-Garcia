@@ -29,14 +29,11 @@ export const useAdmin = () => {
 
         if (userSnap.exists()) {
           const userData = userSnap.data();
-          console.log("Datos del usuario obtenidos:", userData);
           setIsAdmin(!!userData.isAdmin); // Aseguramos que sea booleano
         } else {
-          console.log("No se encontró documento para el usuario");
           setIsAdmin(false);
         }
       } catch (error) {
-        console.error("Error al obtener el rol del usuario:", error);
         setIsAdmin(false);
       }
       setLoading(false);

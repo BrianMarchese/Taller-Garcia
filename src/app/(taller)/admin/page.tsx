@@ -10,12 +10,11 @@ export default function AdminPage() {
   
     useEffect(() => {
       if (!loading && !isAdmin) {
-        console.log("Redirigiendo porque no es admin");
         router.replace("/");
       }
     }, [isAdmin, loading, router]);
   
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return <p className="flex flex-col justify-center items-center min-h-screen">Cargando...</p>;
     if (!isAdmin) return null;
   
     return (

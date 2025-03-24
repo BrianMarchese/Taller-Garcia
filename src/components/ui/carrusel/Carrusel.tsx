@@ -22,7 +22,7 @@ const marcas: Marca[] = [
 export const Carrusel = () => {
   return (
     <div className="bg-[#0099ff] py-6 text-center">
-      <h2 className="text-white md:text-2xl text-xl mb-4 font-bold">TRABAJAMOS CON TODAS LAS MARCAS</h2>
+      <h2 className="text-white md:text-2xl text-xl mb-4 font-bold md:mx-0 mx-1">TRABAJAMOS CON TODAS LAS MARCAS</h2>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}

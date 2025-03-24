@@ -7,6 +7,7 @@ import { FiMenu, FiX } from "react-icons/fi"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation"
 import { signOut } from "firebase/auth"
+import { useAdmin } from "@/hooks/useAdmin"
 
 export const NavBar = () => {
 
@@ -43,7 +44,9 @@ export const NavBar = () => {
 
         await signOut(auth);
         window.location.reload()
-      };
+    };
+
+    const { isAdmin, loading } = useAdmin()
 
   return (
     <nav className=" text-white">
@@ -68,6 +71,13 @@ export const NavBar = () => {
                 <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick}>
                     Reserva tu turno
                 </button>
+                {
+                    !loading && isAdmin && (
+                        <Link  className="m-2 p-2 rounded-md transition-all hover:bg-gray-300/50" href="/admin">
+                            <button>Ver Turnos</button>
+                        </Link>
+                    )
+                }
                 <div>
                     <button className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
                         { user ? "Cerrar sesión" : " " }
@@ -108,6 +118,15 @@ export const NavBar = () => {
                         Reserva tu turno
                     </button>
                 </li>
+                {
+                    !loading && isAdmin && (
+                        <li>
+                            <Link  className="p-2 rounded-md transition-all hover:bg-gray-300/50" href="/admin">
+                                <button>Ver Turnos</button>
+                            </Link>
+                        </li>
+                    )
+                }
                 <li>
                     <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
                         { user ? "Cerrar sesión" : " " }
