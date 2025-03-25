@@ -1,4 +1,5 @@
 import { FloatButtonWhatsapp, Footer, NavBar } from "@/components";
+import { ToastContainer } from "react-toastify";
 
 
 export default function TallerLayout({ children }: {
@@ -12,6 +13,7 @@ export default function TallerLayout({ children }: {
            <Footer />
          </div>
          <FloatButtonWhatsapp />
+         <ToastContainer />
        </main>
      );
    }

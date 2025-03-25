@@ -34,6 +34,7 @@ export const NavBar = () => {
         } else {
             router.push("/turnos")
         }
+        setIsOpen(!isOpen)
     }
 
     const handleLogout = async () => {
@@ -44,6 +45,7 @@ export const NavBar = () => {
 
         await signOut(auth);
         window.location.reload()
+        setIsOpen(!isOpen)
     };
 
     const { isAdmin, loading } = useAdmin()
@@ -60,10 +62,10 @@ export const NavBar = () => {
             </ul>
             <ul className="hidden md:flex">
                 <li>
-                    <Link  className="m-2 p-2 rounded-md transition-all hover:bg-gray-300/50" href="#nosotros">Nosotros</Link>
+                    <Link  className="m-2 p-2 rounded-md transition-all hover:bg-gray-300/50" href="/#nosotros">Nosotros</Link>
                 </li>
                 <li>
-                    <Link  className="m-2 p-2 rounded-md transition-all hover:bg-gray-300/50" href="#contacto">Contacto</Link>
+                    <Link  className="m-2 p-2 rounded-md transition-all hover:bg-gray-300/50" href="/#contacto">Contacto</Link>
                 </li>
 
             </ul>
@@ -104,13 +106,13 @@ export const NavBar = () => {
 
             <ul className="text-white text-xl space-y-6">
                 <li>
-                    <Link href="/nosotros" onClick={toggleMenu} className="rounded-md p-2 hover:bg-gray-300/50 transition-all">
+                    <Link href="/#nosotros" onClick={toggleMenu} className="rounded-md p-2 hover:bg-gray-300/50 transition-all">
                         Nosotros
                     </Link>
                 </li>
                 <li>
-                    <Link href="/servicios" onClick={toggleMenu} className="rounded-md p-2 hover:bg-gray-300/50 transition-all">
-                        Servicios
+                    <Link href="/#contacto" onClick={toggleMenu} className="rounded-md p-2 hover:bg-gray-300/50 transition-all">
+                        Contacto
                     </Link>
                 </li>
                 <li>
@@ -121,7 +123,7 @@ export const NavBar = () => {
                 {
                     !loading && isAdmin && (
                         <li>
-                            <Link  className="p-2 rounded-md transition-all hover:bg-gray-300/50" href="/admin">
+                            <Link  className="p-2 rounded-md transition-all hover:bg-gray-300/50" href="/admin" onClick={toggleMenu} >
                                 <button>Ver Turnos</button>
                             </Link>
                         </li>
