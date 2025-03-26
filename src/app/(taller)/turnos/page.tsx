@@ -82,6 +82,7 @@ export default function TurnosPage() {
               onChange={ (e) => setNombre(e.target.value) }
               id="nombre" 
               className="w-full p-2 rounded-lg border border-gray-600 text-black resize-none focus:outline-none focus:ring-2 focus:ring-[#0099ff]"
+              required
             />
           </div>
 
@@ -92,6 +93,7 @@ export default function TurnosPage() {
               onChange={ (e) => setApellido(e.target.value) }
               id="apellido" 
               className="w-full p-2 rounded-lg border border-gray-600 text-black resize-none focus:outline-none focus:ring-2 focus:ring-[#0099ff]"
+              required
             />
           </div>
 
@@ -103,6 +105,7 @@ export default function TurnosPage() {
               value={ fechaReserva }
               onChange={ (e) => setFechaReserva(e.target.value) }
               className="w-full p-2 rounded-lg  border border-gray-600 text-black focus:outline-none focus:ring-2 focus:ring-[#0099ff]"
+              required
             />
           </div>
 
@@ -114,6 +117,7 @@ export default function TurnosPage() {
               id="celular" 
               placeholder="Celular de contacto" 
               className="w-full p-2 rounded-lg border border-gray-600 text-black resize-none focus:outline-none focus:ring-2 focus:ring-[#0099ff]"
+              required
             />
           </div>
 

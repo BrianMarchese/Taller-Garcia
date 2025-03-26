@@ -49,7 +49,7 @@ export default function AdminPage() {
             {turnos.length === 0 ? (
                 <p className="text-center text-white">No hay turnos registrados.</p>
             ) : (
-                <table className="w-full border-collapse rounded-lg shadow-md overflow-hidden">
+                <table className="w-full border-collapse rounded-lg border overflow-hidden">
                   <thead>
                     <tr className="bg-[#0099ff] text-white">
                       <th className="p-3 text-left">Nombre</th>

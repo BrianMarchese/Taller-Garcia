@@ -8,6 +8,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation"
 import { signOut } from "firebase/auth"
 import { useAdmin } from "@/hooks/useAdmin"
+import { CiCalendar } from "react-icons/ci"
+import { IoIosLogOut } from "react-icons/io"
 
 export const NavBar = () => {
 
@@ -34,18 +36,16 @@ export const NavBar = () => {
         } else {
             router.push("/turnos")
         }
-        setIsOpen(!isOpen)
     }
 
     const handleLogout = async () => {
         if(!user) {
             router.push("/auth/login")
+            setIsOpen(!isOpen)
             return    
         } 
-
         await signOut(auth);
-        window.location.reload()
-        setIsOpen(!isOpen)
+        router.push("/")
     };
 
     const { isAdmin, loading } = useAdmin()
@@ -70,7 +70,8 @@ export const NavBar = () => {
 
             </ul>
             <div className="hidden md:flex md:items-center">
-                <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick}>
+                <button className="flex items-center justify-center transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick}>
+                    <CiCalendar size={26} className="mx-2"/>
                     Reserva tu turno
                 </button>
                 {
@@ -81,8 +82,12 @@ export const NavBar = () => {
                     )
                 }
                 <div>
-                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
+                    <button className="transition-all flex items-center justify-center rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
                         { user ? "Cerrar sesión" : " " }
+                        {
+                            user ? <IoIosLogOut size={26} className="ml-2"/> : ""
+
+                        }
                     </button>
                 </div>
             </div>
@@ -116,7 +121,7 @@ export const NavBar = () => {
                     </Link>
                 </li>
                 <li>
-                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick}>
+                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick} onClickCapture={toggleMenu}>
                         Reserva tu turno
                     </button>
                 </li>
