@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth"
 import { useAdmin } from "@/hooks/useAdmin"
 import { CiCalendar } from "react-icons/ci"
 import { IoIosLogOut } from "react-icons/io"
+import Image from "next/image"
 
 export const NavBar = () => {
 
@@ -54,8 +55,9 @@ export const NavBar = () => {
     <nav className=" text-white">
         <div className="flex px-5 justify-between items-center w-full fixed z-10 bg-black/55 md:h-14">
             <ul className="hidden md:flex">
-                <li >
-                    <Link href="/">
+                <li>
+                    <Link href="/" className="flex items-center justify-center">
+                        <Image src="/logo.png" width={40} height={40} alt="Logo" className="mr-2" />
                         <span className="antialiased font-bold text-xl">Taller García Hnos</span>
                     </Link>
                 </li>
@@ -86,14 +88,16 @@ export const NavBar = () => {
                         { user ? "Cerrar sesión" : " " }
                         {
                             user ? <IoIosLogOut size={26} className="ml-2"/> : ""
-
                         }
                     </button>
                 </div>
             </div>
 
             {/* Menú hamburguesa para móviles */}
-            <span className="md:hidden antialiased font-bold text-xl flex items-center justify-center">Taller García Hnos</span>
+            <Link href="/" className="flex justify-center items-center md:hidden">
+                <Image src="/logo.png" width={40} height={40} alt="Logo" className="mr-2" />
+                <span className="md:hidden antialiased font-bold text-xl flex items-center justify-center">Taller García Hnos</span>
+            </Link>
             <div className="md:hidden text-white py-5">
                 <button onClick={toggleMenu} className="flex items-center justify-center">
                     {isOpen ?  "" : <FiMenu className="w-6 h-6" />}

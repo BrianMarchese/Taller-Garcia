@@ -31,7 +31,7 @@ export default function Home() {
       <motion.div initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="absolute inset-0 flex items-center justify-center text-white md:text-4xl text-2xl font-bold md:ml-0 text-center">
         ¡Bienvenido a nuestro taller García Hnos!
       </motion.div>
-      <motion.div initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="absolute inset-0 flex items-center justify-center text-white md:text-2xl text-lg font-bold md:ml-0 text-center md:mt-28 mt-52 p-3">
+      <motion.div initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="absolute inset-0 flex items-center justify-center text-white md:text-2xl text-lg font-bold md:ml-0 text-center md:mt-[135px] mt-52 p-3">
         Nuestra misión es garantizar la seguridad y el rendimiento de tu vehículo con un servicio profesional y transparente 🚗💨
       </motion.div>
 

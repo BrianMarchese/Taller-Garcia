@@ -69,7 +69,7 @@ export default function TurnosPage() {
     
     
     return (
-    <div className="flex items-center justify-center min-h-screen px-4">
+    <div className="flex items-center justify-center px-4">
       <div className="w-full sm:w-[450px] bg-gray-600 text-gray-300 shadow-lg rounded-2xl p-6 md:mt-28 mt-20 ">
         <h2 className="text-2xl font-bold text-center mb-6">Reserva tu turno</h2>
 
