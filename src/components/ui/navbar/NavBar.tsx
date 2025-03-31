@@ -47,7 +47,6 @@ export const NavBar = () => {
         } 
         await signOut(auth);
         router.push("/")
-        setIsOpen(!isOpen)
     };
 
     const { isAdmin, loading } = useAdmin()
@@ -140,7 +139,7 @@ export const NavBar = () => {
                     )
                 }
                 <li>
-                    <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
+                    <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout} onClickCapture={ () => setIsOpen(!isOpen)}>
                         { user ? "Cerrar sesión" : " " }
                     </button>
                 </li>
