@@ -48,7 +48,7 @@ export default function AdminPage() {
           setTurnos(turnos.filter((turno) => turno.id !== id));
           toast.success("Turno eliminado correctamente", {
             position: "top-center",
-            autoClose: 2000, // El toast se cerrará después de 3 segundos
+            autoClose: 3000, // El toast se cerrará después de 3 segundos
             hideProgressBar: false, // Ocultar la barra de progreso
             closeOnClick: true,
             pauseOnHover: true,

@@ -38,7 +38,7 @@ export default function TurnosPage() {
         await addDoc(collection(db, "turnos"), nuevoTurno)
         toast.success("Turno registrado correctamente", {
           position: "top-center",
-          autoClose: 2000, // El toast se cerrará después de 3 segundos
+          autoClose: 3000, // El toast se cerrará después de 3 segundos
           hideProgressBar: false, // Ocultar la barra de progreso
           closeOnClick: true,
           pauseOnHover: true,
@@ -56,7 +56,7 @@ export default function TurnosPage() {
       } catch (error) {
         toast.error(`Error al registrar el turno ${ error }`, {
           position: "top-center",
-          autoClose: 2000, // El toast se cerrará después de 3 segundos
+          autoClose: 3000, // El toast se cerrará después de 3 segundos
           hideProgressBar: false, // Ocultar la barra de progreso
           closeOnClick: true,
           pauseOnHover: true,

@@ -47,6 +47,7 @@ export const NavBar = () => {
         } 
         await signOut(auth);
         router.push("/")
+        setIsOpen(!isOpen)
     };
 
     const { isAdmin, loading } = useAdmin()
