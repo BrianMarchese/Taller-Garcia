@@ -7,12 +7,14 @@ import { doc, getDoc, setDoc } from "firebase/firestore"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { HiEye, HiEyeOff } from "react-icons/hi"
 
 const RegisterForm = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
     // Creo la funcion para registrar al usuario y guardarlo en la db
@@ -72,8 +74,27 @@ const RegisterForm = () => {
             <input className = "px-5 py-2 border border-[#0099ffe5] bg-gray-200 rounded mb-5" id="email" value={email} onChange={(e) => setEmail(e.target.value)} type="email"/>
 
 
-            <label htmlFor="password">Contraseña</label>
-            <input className="px-5 py-2 border bg-gray-200 rounded mb-5 border-[#0099ffe5]" id="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
+            <label htmlFor="password" className="block">Contraseña</label>
+            <div className="relative">
+
+                <input
+                    className="px-5 py-2 border bg-gray-200 rounded mb-5 border-[#0099ffe5] focus:outline-none focus:ring-1 focus:ring-[#0099ff] w-full"
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} 
+                />
+
+                <button
+                    type="button"
+                    className="absolute right-3 top-5 transform -translate-y-1/2 text-gray-600"
+                    onClick={() => setShowPassword(!showPassword)}>
+                        
+                    {showPassword ? <HiEyeOff size={20} className="text-[#0099ffe5]"/> : <HiEye size={20} className="text-[#0099ffe5]" />}
+                </button>
+            </div>
+
 
             <button className="bg-[#0099ffe5] hover:bg-sky-400 w-full p-2 rounded transition-all text-white disabled:opacity-50" type="submit" disabled={loading}>
                 {loading ? "Creando cuenta..." : "Crear cuenta"}
