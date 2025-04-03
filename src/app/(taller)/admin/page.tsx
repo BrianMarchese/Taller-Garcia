@@ -79,6 +79,7 @@ export default function AdminPage() {
                       <th className="p-3 text-left">Apellido</th>
                       <th className="p-3 text-left">Usuario</th>
                       <th className="p-3 text-left">Fecha</th>
+                      <th className="p-3 text-left">Hora seleccionada</th>
                       <th className="p-3 text-left">Nota</th>
                       <th className="p-3 text-left">Teléfono de contacto</th>
                       <th className="p-3 text-left"></th>
@@ -90,19 +91,20 @@ export default function AdminPage() {
                         key={turno.id}
                         className="bg-gray-200"
                       >
-                        <td className="p-3 md:w-28">{turno.nombre}</td>
-                        <td className="p-3">{turno.apellido}</td>
-                        <td className="p-3">{turno.email || "Desconocido"}</td>
-                        <td className="p-3 md:w-28">{turno.fechaReserva}</td>
-                        <td className="p-3">{turno.nota}</td>
+                        <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.nombre}</td>
+                        <td className="p-3 border-r border-gray-400">{turno.apellido}</td>
+                        <td className="p-3 border-r border-gray-400">{turno.email || "Desconocido"}</td>
+                        <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.fechaReserva}</td>
+                        <td className="p-3 border-r border-gray-400">{turno.horaReserva}</td>
+                        <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.nota}</td>
                         <td className="p-3">{turno.telefono}</td>
-                        <td className="p-3">
+{                        <td className="p-3">
                           <button
                             className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
                             onClick={() => handleDelete(turno.id)}>
                             Eliminar
                           </button>
-                        </td>
+                        </td>}
                       </tr>
                     ))}
                   </tbody>

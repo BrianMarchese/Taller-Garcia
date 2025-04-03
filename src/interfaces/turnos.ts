@@ -5,6 +5,7 @@ export interface Turnos {
     apellido: string,
     email: string | null,
     fechaReserva: string,
+    horaReserva: string,
     nota: string,
     telefono: string,
     createdAt: FieldValue

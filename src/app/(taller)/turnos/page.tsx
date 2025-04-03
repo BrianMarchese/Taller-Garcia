@@ -2,20 +2,40 @@
 
 import { Turnos } from "@/interfaces/turnos"
 import { auth, db } from "@/lib/firebaseConfig"
-import { addDoc, collection, FieldValue, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, FieldValue, getDocs, query, serverTimestamp, where } from "firebase/firestore"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Bounce, toast } from "react-toastify"
 
 export default function TurnosPage() {
 
     const [fechaReserva, setFechaReserva] = useState("")
+    const [horaReserva, setHoraReserva] = useState("");
+    const [horasDisponibles, setHorasDisponibles] = useState<string[]>([]);
     const [nombre, setNombre] = useState("")
     const [apellido, setApellido] = useState("")
     const [nota, setNota] = useState("")
     const [telefono, setTelefono] = useState("")
     const router = useRouter();
   
+    const horarios = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
+
+    const fetchHorasDisponibles = async (fecha: string) => { // Cada vez que el usuario elige una fecha, se busca en Firestore cuáles horarios ya están ocupados para esa fecha y se actualiza la lista de horasDisponibles
+      const turnosRef = collection(db, "turnos");
+      const queryy = query(turnosRef, where("fechaReserva", "==", fecha));
+      const snapshot = await getDocs(queryy);
+    
+      const horasReservadas = snapshot.docs.map(doc => doc.data().horaReserva);
+      const horasLibres = horarios.filter(hora => !horasReservadas.includes(hora));
+      setHorasDisponibles(horasLibres);
+    };
+    
+    useEffect(() => { // Cada vez que cambia fechaReserva, se ejecuta la función para buscar horarios disponibles.
+      if (fechaReserva) {
+        fetchHorasDisponibles(fechaReserva);
+      }
+    }, [fechaReserva]);
+
     const handleSubmit = async ( e: React.FormEvent ) => {
       e.preventDefault()
 
@@ -30,6 +50,7 @@ export default function TurnosPage() {
           apellido,
           email: auth.currentUser.email,
           fechaReserva,
+          horaReserva,
           nota,
           telefono,
           createdAt: serverTimestamp() as FieldValue,
@@ -108,6 +129,21 @@ export default function TurnosPage() {
               required
             />
           </div>
+          <div>
+            <label className="block font-medium mb-1">Hora</label>
+            <div className="grid grid-cols-3 gap-2">
+                {horasDisponibles.map((hora) => (
+                    <button
+                      type="button"
+                      key={hora}
+                      onClick={() => setHoraReserva(hora)}
+                      className={`p-2 rounded-lg border border-gray-600 text-white transition-all ${
+                      horaReserva === hora ? "bg-[#0099ff] text-white" : "bg-gray-500"}`}>
+                      {hora}
+                    </button>))}
+              </div>
+          </div>
+
 
           <div>
             <label htmlFor="celular" className="block font-medium mb-1">Celular</label>
