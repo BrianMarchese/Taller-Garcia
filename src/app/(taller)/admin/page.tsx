@@ -98,13 +98,15 @@ export default function AdminPage() {
                         <td className="p-3 border-r border-gray-400">{turno.horaReserva}</td>
                         <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.nota}</td>
                         <td className="p-3">{turno.telefono}</td>
-{                        <td className="p-3">
+                        {
+                          <td className="p-3">
                           <button
                             className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
                             onClick={() => handleDelete(turno.id)}>
                             Eliminar
                           </button>
-                        </td>}
+                        </td>
+                        }
                       </tr>
                     ))}
                   </tbody>
