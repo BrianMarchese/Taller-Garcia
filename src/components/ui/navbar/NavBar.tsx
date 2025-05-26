@@ -136,7 +136,7 @@ export const NavBar = () => {
                     </Link>
                 </li>
                 <li>
-                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleReservationClick} onClickCapture={toggleMenu}>
+                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " type="button" onClick={handleReservationClick} onClickCapture={toggleMenu}>
                         Reserva tu turno
                     </button>
                 </li>
@@ -144,19 +144,21 @@ export const NavBar = () => {
                     !loading && isAdmin && (
                         <li>
                             <Link  className="p-2 rounded-md transition-all hover:bg-gray-300/50" href="/admin" onClick={toggleMenu} >
-                                <button>Ver Turnos</button>
+                                <button type="button">Ver Turnos</button>
                             </Link>
                         </li>
                     )
                 }
                 <li>
-                    <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout} onClickCapture={ () => setIsOpen(!isOpen)}>
-                        { user ? "Cerrar sesión" : " " }
-                    </button>
+                    {
+                        user && !isAdmin ?
+                            <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " type="button" onClick={handleMisTurnosClick} onClickCapture={ () => setIsOpen(!isOpen)}> Ver mis turnos </button>
+                        : ""
+                    }
                 </li>
                 <li>
-                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleMisTurnosClick}>
-                        Ver mis turnos
+                    <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout} onClickCapture={ () => setIsOpen(!isOpen)}>
+                        { user ? "Cerrar sesión" : " " }
                     </button>
                 </li>
             </ul>
