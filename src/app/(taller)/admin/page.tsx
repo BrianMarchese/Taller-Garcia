@@ -12,6 +12,11 @@ export default function AdminPage() {
     const [turnos, setTurnos] = useState<any[]>([]);
     const [cargando, setCargando] = useState(true);
     const router = useRouter();
+
+    const fechaFormat = (fecha: string) => {
+      const [anio, mes, dia] = fecha.split("-");
+      return `${dia}-${mes}-${anio}`;
+    }
   
     useEffect(() => { // verifico si firebase no esta verificando si es admin y si no es admin lo mando al home
       if (!loading && !isAdmin) {
@@ -94,7 +99,7 @@ export default function AdminPage() {
                         <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.nombre}</td>
                         <td className="p-3 border-r border-gray-400">{turno.apellido}</td>
                         <td className="p-3 border-r border-gray-400">{turno.email || "Desconocido"}</td>
-                        <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.fechaReserva}</td>
+                        <td className="p-3 whitespace-nowrap border-r border-gray-400">{fechaFormat(turno.fechaReserva)}</td>
                         <td className="p-3 border-r border-gray-400">{turno.horaReserva}</td>
                         <td className="p-3 whitespace-nowrap border-r border-gray-400">{turno.nota}</td>
                         <td className="p-3">{turno.telefono}</td>

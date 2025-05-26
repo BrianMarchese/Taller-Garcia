@@ -51,6 +51,14 @@ export const NavBar = () => {
 
     const { isAdmin, loading } = useAdmin()
 
+    const handleMisTurnosClick = () => {
+        if (!user) {
+            router.push("/auth/login")
+        } else {
+            router.push("/misTurnos")
+        }
+    }
+
   return (
     <nav className=" text-white">
         <div className="flex px-5 justify-between items-center w-full fixed z-10 bg-black/55 md:h-14">
@@ -82,6 +90,9 @@ export const NavBar = () => {
                             <button>Ver Turnos</button>
                         </Link>
                     )
+                }
+                {
+                    user && !isAdmin ? <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleMisTurnosClick}> Ver mis turnos </button> : ""
                 }
                 <div>
                     <button className="transition-all flex items-center justify-center rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout}>
@@ -141,6 +152,11 @@ export const NavBar = () => {
                 <li>
                     <button type="button" className="transition-all rounded-md hover:bg-gray-300/50 p-2" onClick={handleLogout} onClickCapture={ () => setIsOpen(!isOpen)}>
                         { user ? "Cerrar sesión" : " " }
+                    </button>
+                </li>
+                <li>
+                    <button className="transition-all rounded-md hover:bg-gray-300/50 p-2 " onClick={handleMisTurnosClick}>
+                        Ver mis turnos
                     </button>
                 </li>
             </ul>
